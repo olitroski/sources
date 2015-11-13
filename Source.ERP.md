@@ -1,7 +1,9 @@
 ## Como utilizar el Source ERP
 Intrucciones para usar el source para combinar archivos originales de ERP.
 
-> Instalar por una vez los siguientes paquetes de R, con las siguientes lineas de comando
+En una carpeta  del PC cualquiera copiar todos los archivos originales de ERP, más el archivo con los nombres de variables. **Debe ser una copia** porque se hacen modificaciones a los originales e inclusive se eliminan.
+
+> Instalar por una vez los siguientes paquetes de R, escribiendo las siguientes lineas de comando en la consola de R.
 
 	install.packages("xlsx")
 	install.packages("dplyr")
@@ -11,8 +13,10 @@ Intrucciones para usar el source para combinar archivos originales de ERP.
 ## Instrucciones para usar el Source
 
 > **1.- Abrir R**
+Cualquier versón sirve, si no se tiene ninguna es recomendable RStudio que es más amable y se puede descargar haciendo clic acá.
 
-	Cualquier versión
+[https://download1.rstudio.org/RStudio-0.99.489.exe](https://download1.rstudio.org/RStudio-0.99.489.exe "https://download1.rstudio.org/RStudio-0.99.489.exe")
+
 
 > **2.- Cargar el paquete `devtools`**. Escribiendo en la linea de comandos
 
@@ -45,7 +49,7 @@ Las lineas de comando a escribir serían entonces, siguiendo el ejemplo anterior
 	dir <- "C:/Users/Oliver/Desktop/erp_ejemplo"
 	var <- "Variables.txt"
 	
-	# Este ultimo comando hace la magia 
+	# Este ultimo comando hace el trabajo
 	erp(dir, var) 
  
 
