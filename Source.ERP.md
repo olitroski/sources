@@ -18,10 +18,9 @@ Intrucciones para usar el source para combinar archivos originales de ERP.
 
 	library(devtools)
 
-> **3.- Guardar la url del source en un objeto que llamaremos url y cargar el source**
+> **3.- Cargar el source desde internet**
 
-	url <- "https://raw.githubusercontent.com/olitroski/sources/master/source_erp.r"
-	source_url(dir)
+	source_url("https://raw.githubusercontent.com/olitroski/sources/master/source_erp.r")
 
 > **4.- Guardar en un objeto la dirección de la carpeta donde se está trabajando y el nombre del archivo con las variables.** Nota: En la dirección de la carpeta el seprarador es `/` y que el archivo de variables debe tener una configuración adecuada. 
 
