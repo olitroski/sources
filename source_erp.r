@@ -2,7 +2,7 @@
 ## Script para funcion de capturar datos y combinar archivos de ERP ##
 ## by Oiver Rojas - Noviembre 2015 - Lab.Sueño - Inta - Uchile      ##
 ######################################################################
-erp <- function(directorio, nomvariable)
+erp <- function(directorio, nomvariable) {
 require(dplyr)
 require(xlsx)
 
@@ -67,13 +67,6 @@ for (erp in archivos) {
 	datos <- rbind(datos, df)
 }
 
-# Zip a los originales
-zip("asdf.zip"; files=archivos)
-
-for (erp in archivos) {
-	unlink(erp)
-}
-
 
 # Mover los archivos a una carpeta
 dir.create("archivos_originales")
@@ -84,6 +77,7 @@ unlink(archivos)
 # Crear un excel con el archivo final
 write.xlsx(datos, "erp.xlsx", row.names=FALSE, sheetName="ERP")
 write.table(rawnames, nomvariable, row.names = FALSE, quote = FALSE, col.name = FALSE)
+}
 
 
 
