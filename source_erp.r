@@ -7,12 +7,12 @@ require(dplyr)
 require(xlsx)
 
 ## Setea directorio, captura nombre de variables y las borra del directorio
-directorio <- "C:/Users/Oliver/Desktop/erp_ejemplo"
+# directorio <- "C:/Users/Oliver/Desktop/erp_ejemplo"
 setwd(directorio)
 
 
 # Leer los nombres de archivos
-nomvariable <- "Variables.txt"
+# nomvariable <- "Variables.txt"
 rawnames <- readLines(nomvariable)
 for (i in 1:length(rawnames)) {
 	n <- read.table(text = rawnames[i], stringsAsFactors = FALSE)
