@@ -24,9 +24,36 @@ Cualquier versón sirve, si no se tiene ninguna es recomendable RStudio que es m
 
 > **3.- Cargar el source desde internet.** Copiando y pegando en la linea de comandos la siguiente linea
 
+Version 1 **Usar la otra mejor**
+
 	source_url("https://raw.githubusercontent.com/olitroski/sources/master/source_erp.r")
 
-> **4.- Guardar en un objeto la dirección (dir) de la carpeta donde se está trabajando y el nombre del archivo (var) con las variables.** En la dirección de la carpeta el seprarador es `/` y el archivo de variables debe tener una configuración adecuada al archivo erp que se quiere abrir. 
+Version 2 del source con ventanitas. **Usar esta**
+
+	source_url("https://raw.githubusercontent.com/olitroski/sources/master/source_erp_choose.r")
+
+> **4.- Usar la función**
+
+	erp()
+
+## Resumen
+Las lineas de comando a escribir serían entonces, siguiendo el ejemplo anterior. Tambien se puede descargar el script:
+
+	# Instalar los paquetes
+		install.packages("xlsx")
+		install.packages("dplyr")
+		install.packages("devtools")
+		
+	# Cargar la libreria y el source
+		library(devtools)
+		source_url("https://raw.githubusercontent.com/olitroski/sources/master/source_erp_choose.r")
+	
+	# Ejecutar el source
+		erp()
+ 
+
+## Version 1 - Antigua
+> **Version antigua** Guardar en un objeto la dirección (dir) de la carpeta donde se está trabajando y el nombre del archivo (var) con las variables. En la dirección de la carpeta el seprarador es `/` y el archivo de variables debe tener una configuración adecuada al archivo erp que se quiere abrir. 
 
 	# Ejemplo
 	dir <- "C:/Users/Oliver/Desktop/erp_ejemplo"
@@ -36,23 +63,8 @@ Cualquier versón sirve, si no se tiene ninguna es recomendable RStudio que es m
 	dir <- "la ruta a la carpeta de trabajo"
 	var <- "nombre completo con extensión del archivo de variables
 
-> **5.- Ejecutar el Source**
+> **Version antigua** Ejecutar el Source
 
 	erp(dir, var)
-
-
-## Resumen
-Las lineas de comando a escribir serían entonces, siguiendo el ejemplo anterior:
-
-	library(devtools)
-	source_url("https://raw.githubusercontent.com/olitroski/sources/master/source_erp.r")
-	dir <- "C:/Users/Oliver/Desktop/erp_ejemplo"
-	var <- "Variables.txt"
-	
-	# Este ultimo comando hace el trabajo
-	erp(dir, var) 
- 
-
-
  
  
