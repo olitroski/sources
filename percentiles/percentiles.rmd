@@ -1,30 +1,71 @@
 ---
 title: "Test para percentiles"
 author: "Oliver Rojas"
-date: "5 de abril de 2016"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+## Requisitos del Source
 
-## R Markdown
+Los requisitos son muy sencillos
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+* Contar con R
+* Tener los siguientes paquetes instalados
+     - dplyr
+     - foreign
+     - xlsx
+     - devtools
+* Contar con el archivo de datos en formato stata version 12, para obtenerlo escribir en la linea de comando `saveold archivo.dta, replace`
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
-```
+## Instrucciones
 
-## Including Plots
+Para usar el script como source seguir esta secuencia.
 
-You can also embed plots, for example:
+1. Cargar el paquete `library(devtools)`
+2. Cargar la funcion para los percentiles
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+`source_url("https://raw.githubusercontent.com/olitroski/sources/master/percentiles/percentiles.r"")`
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+4. Setear el directorio de trabajo `setwd("directorio")`
+3. Utilizar la función con los siguientes componentes
+
+* Datos: Archivo stata
+* varpct: Variable que se pasarÃ¡ a percentiles
+* varcal: Variable con la que se contrastara la variable en percentil
+* varfiltro: es la variable de filtro, si no existe se debe crear y que solo contenga valor = 1
+* filtro: es el valor de la variable filtro, si no existe la var * anterior indicar el valor = 1
+* Argumentos de funcion: `function(datos, varpct, varcal, varfiltro, filtro)`
+
+* Ejemplo de uso: *
+
+`library(devtools)`
+
+`source_url("https://raw.githubusercontent.com/olitroski/sources/master/percentiles/percentiles.r")`
+
+`setwd("D:\percentiles")`
+
+`percentil("auto.dta", "mpg", "price", "rep78", "3")`
+
+
+## Resultados
+
+La función deja un excel con el nombre de la varible en PCT en el directorio de trabajo.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
