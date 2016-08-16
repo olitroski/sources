@@ -142,3 +142,7 @@ base_datos <- arrange(base_datos, idnum, visit)
 
 ## Pasar a Excel
 write.xlsx(base_datos, file="BaseDatos.xlsx", sheetName="epi")
+
+
+gato <- function() {cat("\n\nListos los calculos\n\n     /\\_/\\\n    (='_'=)\n    (\")_(\")\n\n\n")}
+gato()
