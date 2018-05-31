@@ -1,4 +1,4 @@
-# Script para cargar los sources que mas uso.
+## Script para cargar los sources que mas uso.
 
 # Ordenar variables
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_order.var.r")
@@ -14,7 +14,12 @@ source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest_pair.r")
 
 
-
+## Y las librerias
+library(stringr)
+library(dplyr)
+library(openxlsx)
+library(foreign)
+library(ggplot2)
 
 
 
