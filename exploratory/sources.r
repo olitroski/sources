@@ -15,11 +15,11 @@ source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 
 
 # ## Y las librerias
-# library(stringr)
-# library(dplyr)
-# library(openxlsx)
-# library(foreign)
-# library(ggplot2)
+library(stringr)
+library(dplyr)
+library(openxlsx)
+library(foreign)
+library(ggplot2)
 
 
 
