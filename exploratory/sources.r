@@ -14,12 +14,12 @@ source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest_pair.r")
 
 
-## Y las librerias
-library(stringr)
-library(dplyr)
-library(openxlsx)
-library(foreign)
-library(ggplot2)
+# ## Y las librerias
+# library(stringr)
+# library(dplyr)
+# library(openxlsx)
+# library(foreign)
+# library(ggplot2)
 
 
 
