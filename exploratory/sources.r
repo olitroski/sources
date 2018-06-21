@@ -13,6 +13,8 @@ source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest_indep.r")
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest_pair.r")
 
+# Merge
+source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_merge.r")
 
 # ## Y las librerias
 library(stringr)
