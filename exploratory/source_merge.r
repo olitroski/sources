@@ -68,6 +68,6 @@ merge.table <- function(df = NULL, keep = FALSE){
      match <- filter(datos, merge == "Matched observations")
 
      if (keep == TRUE){
-          return(list(using = u, master = m, match = match))
+          return(list(using = u, master = m, match = match, report = report))
      }
 }
