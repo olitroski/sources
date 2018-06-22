@@ -8,31 +8,58 @@
 #    id está en la columna 1
 #    Los rangos son numericos 2:7, asi tal cual "numero:numero"
 #    keep = TRUE arroja una lista con las 3 categorías de match.
+#
+#    Como es lata que a cada rato pregunte por las columnas agrego "cols", en donde se 
+#    ingresan como texto los rangos de columnas del master ya que con eso basta si se 
+#    cumplen las reglas
 
 
-merge.table <- function(df = NULL, keep = FALSE){
+
+merge.table <- function(df = NULL, cols = "no", keep = FALSE){
      # df <- eyetrack.stats
      require(dplyr)
      
-     # Captura datos
-     print(data.frame(variables = names(df)))
-     
-     master <- readline("Rango columnas del master (sin la key): ")
-     using <- readline("Rango columnas del using (sin la key): ")
-     merged <- paste("2:", dim(df)[2], sep="")
-
-     # Informar
-     varnames <- names(df)
-     
-     master.ini <- eval(parse(text=master))[1]
-     master.fin <- max(eval(parse(text=master)))
-     cat("\nMaster", master, "- Inicio:", varnames[master.ini], 
-          "\n               Final:", varnames[master.fin], "\n")
-     
-     using.ini <- eval(parse(text=using))[1]
-     using.fin <- max(eval(parse(text=using)))
-     cat("\nUsing", using, "- Inicio:", varnames[using.ini], 
-          "\n               Final:", varnames[using.fin], "\n\n")
+     ## Checa si se declararon las columnas
+     if (cols == "no"){   
+          # Captura datos
+          print(data.frame(variables = names(df)))
+          
+          master <- readline("Rango columnas del master (sin la key): ")
+          using <- readline("Rango columnas del using (sin la key): ")
+          merged <- paste("2:", dim(df)[2], sep="")
+          
+          # Informar
+          varnames <- names(df)
+          
+          master.ini <- eval(parse(text=master))[1]
+          master.fin <- max(eval(parse(text=master)))
+          cat("\nMaster", master, "- Inicio:", varnames[master.ini], 
+               "\n               Final:", varnames[master.fin], "\n")
+          
+          using.ini <- eval(parse(text=using))[1]
+          using.fin <- max(eval(parse(text=using)))
+          cat("\nUsing", using, "- Inicio:", varnames[using.ini], 
+               "\n               Final:", varnames[using.fin], "\n\n")
+          
+     } else {
+          # Captura de columnas
+          master <- cols
+          using <- paste(max(eval(parse(text=master)))+1, ":", dim(df)[2], sep = "")
+          merged <- paste("2:", dim(df)[2], sep="")
+ 
+           # Informar
+          varnames <- names(df)
+          
+          master.ini <- eval(parse(text=master))[1]
+          master.fin <- max(eval(parse(text=master)))
+          cat("\nMaster", master, "- Inicio:", varnames[master.ini], 
+               "\n               Final:", varnames[master.fin], "\n")
+          
+          using.ini <- eval(parse(text=using))[1]
+          using.fin <- max(eval(parse(text=using)))
+          cat("\nUsing", using, "- Inicio:", varnames[using.ini], 
+               "\n               Final:", varnames[using.fin], "\n\n")
+     }
      
 
      # Agregar las variables
