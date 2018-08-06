@@ -66,7 +66,7 @@ ttest.indep <- function(varlist = NULL, grpvar = NULL, data = NULL, version = 1,
           stat <- mutate(stat, variable = deplab, mean = round(mean, 3), sd = round(sd, 3))
           stat <- reshape(stat, timevar = names(stat)[1], idvar = "variable", direction = "wide")
           stat$diff <- as.numeric(stat[5] - stat[2])
-          stat <- select(stat, -variable)
+          stat <- dplyr::select(stat, -variable)
           
           vs <- names(table(tdata[2]))
           vs <- paste(vs[1], "vs", vs[2])
