@@ -5,7 +5,7 @@
 # Function Test Data
      # rm(list=ls())
      # data <- mtcars
-     # var_unique <- "mpg"						
+     # var_unique <- "mpg"
      # var_set <- c("mpg", "cyl", "qsec")
      # var_multiple <- c("drat", "hp", "wt")
      # type <- "pearson"
@@ -23,8 +23,7 @@
 pwcorr <- function(set1 = NULL, set2 = NULL, data = NULL, type = "pearson", save = "file", set = NULL){ 
      # Packages
      require(dplyr); require(Hmisc)
-	
-	
+		
 	## Selecciona si 1var vs Multiple o 2 sets
 	if (set == 1){
 	     # Calculos 1 set:  1var - Many
