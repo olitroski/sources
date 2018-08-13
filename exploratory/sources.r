@@ -16,6 +16,9 @@ source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 # Merge
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_merge.r")
 
+# Un Scatter Plot
+source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_merge.r")
+
 # ## Y las librerias
 library(stringr)
 library(dplyr)
