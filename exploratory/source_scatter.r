@@ -57,11 +57,11 @@ scatter <- function(xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = 
      r <- pwcorr(set1="varx", set2="vary", data = gdata, set = 1)
      r <- paste("Pearson: n=", N, " r=", r[1,2], " p=", sprintf("%.3f",r[1,3]), sep="")
           
-     fit <- lm(varx ~ vary, data = gdata)
+     fit <- lm(vary ~ varx, data = gdata)
      fit <- summary(fit)
      fit <- as.data.frame(fit$coefficients); names(fit)[4] <- "pvalor"
      fit <- mutate(fit, Estimate = round(Estimate, 3), pvalor = round(pvalor, 3))
-     fit <- paste("Regress: ", yvar, " = ", fit[2,1], " + ", fit[1,1], "*", xvar, " (", sprintf("%.3f",fit[1,4]), ")", sep="")
+     fit <- paste("Regress: ", yvar, " = ", fit[1,1], " + ", fit[2,1], "*", xvar, " (", sprintf("%.3f",fit[2,4]), ")", sep="")
      
      
      # Plot
