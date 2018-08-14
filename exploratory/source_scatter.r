@@ -21,17 +21,20 @@ scatter <- function(xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = 
      }
      
 
-     # Selección de datos 
-     gdata <- select(data, varx = xvar, vary = yvar, varc = color)
-          
+     # Selección de datos
+     if (class(color) == "NULL"){
+          gdata <- select(data, varx = xvar, vary = yvar)
+     } else {
+          gdata <- select(data, varx = xvar, vary = yvar, varc = color)
+     }
+     
+     
      # Remoción de outliers SD sobre 3
      if (outl == TRUE){
           gdata <- mutate(gdata, zx = scale(varx)[,1], zy = scale(vary)[,1])
           gdata <- filter(gdata, zx < 3, zy < 3) 
           gdata <- select(gdata, -zx, -zy)
-     } else {
-          stop("algo pasó en los outliers")
-     }
+     } 
      
      
      # Pairwise data, solo datos validos.
