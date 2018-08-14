@@ -13,6 +13,13 @@ scatter <- function(xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = 
      source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_pwcorr.r")
      require(ggplot2)
      require(dplyr)
+     
+     # Para la ayuda
+     if (class(xvar) == "NULL"){
+          cat("xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = FALSE \n")
+          stop("No olvidar -> Variables en character")
+     }
+     
 
      # Selección de datos 
      gdata <- select(data, varx = xvar, vary = yvar, varc = color)
