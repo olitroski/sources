@@ -170,7 +170,7 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL){
 # cvar <- "am"     
 # otable(rvar = "cyl", data = mtcars)
 # otable(rvar = "cyl", cvar = "am", data = mtcars)
-tab <- otable(rvar = "cyl", cvar = "am", data = mtcars)
-tab$freq
+# tab <- otable(rvar = "cyl", cvar = "am", data = mtcars)
+# tab$freq
 
 
