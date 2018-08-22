@@ -19,6 +19,10 @@ source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 # Un Scatter Plot
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_scatter.r")
 
+# Tablas de contingencia Olito's Table
+source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_otable.r")
+
+
 # ## Y las librerias
 library(stringr)
 library(dplyr)
