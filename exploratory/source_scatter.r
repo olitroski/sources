@@ -23,9 +23,9 @@ scatter <- function(xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = 
 
      # Selección de datos
      if (class(color) == "NULL"){
-          gdata <- select(data, varx = xvar, vary = yvar)
+          gdata <- select_(data, varx = xvar, vary = yvar)
      } else {
-          gdata <- select(data, varx = xvar, vary = yvar, varc = color)
+          gdata <- select_(data, varx = xvar, vary = yvar, varc = color)
      }
      
      

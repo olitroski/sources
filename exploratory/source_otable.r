@@ -49,16 +49,15 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL){
           df <- paste("table(data$", rvar, ", data$", cvar, ")", sep = "")
           df <- eval(parse(text=df))
           
-          
           # Tabla de frecuencias
           freq <- data.frame(df)
           names(freq) <- c(rvar, "time", cvar)
           freq <- reshape(freq, timevar = "time", idvar = rvar, direction = "wide")
-          
-          cols <- colSums(freq[,(2:dim(freq)[2])])
+                    
+          cols <- colSums(freq[,(2:dim(freq)[2])])   ## Ta weno pero no aguanta largos nombres
           cols <- data.frame(t(cols))
           cols <- cbind(data.frame("total"), cols)
-          names(cols)[1] <- rvar
+          names(cols) <- names(freq)
           freq <- rbind(freq, cols)
           
           rows <- rowSums(freq[,(2:dim(freq)[2])])
@@ -78,11 +77,11 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL){
           rows <- data.frame(rows)
           rows <- select(rows, total = Freq)
           pctcol <- cbind(pctcol, rows)
-                    
+                              
           cols <- colSums(pctcol[,(2:dim(pctcol)[2])])          
           cols <- data.frame(t(cols))
           cols <- cbind(data.frame("total"), cols)
-          names(cols)[1] <- rvar
+          names(cols) <- names(pctcol)
           pctcol <- rbind(pctcol, cols)
           
           col1 <- select(pctcol, 1)
@@ -149,12 +148,13 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL){
           
           
           # Test de independencia
-          F <- fisher.test(df)
-          F <- F$p.value
+#           F <- fisher.test(df)
+#           F <- F$p.value
           
           chi <- summary(df)
           chi <- data.frame(table = paste(rvar, "*", cvar),  
-               ChiSq = sprintf("%.3f", chi$p.value), Exact = sprintf("%.3f", F))
+               ChiSq = sprintf("%.3f", chi$p.value))
+#              ChiSq = sprintf("%.3f", chi$p.value), Exact = sprintf("%.3f", F))
          
           
           # Resultado
