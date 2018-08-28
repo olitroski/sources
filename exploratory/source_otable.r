@@ -173,17 +173,17 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL, clip = 0){
                return(tab)
           
           } else if (clip == 2){
-               tab <- lista$pctrow
+               tab <- lista$row
                write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
                return(tab)         
                     
           } else if (clip == 3){
-               tab <- lista$pctcol
+               tab <- lista$col
                write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
                return(tab)  
           
           } else if (clip == 4){
-               tab <- lista$pctcell
+               tab <- lista$cell
                write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
                return(tab) 
                
