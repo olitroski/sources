@@ -1,19 +1,20 @@
-# Función para calcular una tabla de contingencia o de 1 variable, se pasa a una lista
-# con los elementos, freq - row - col - cell - x2, todo en un data frame, se hace un
-# clipboard de alguna de ellas, hay que indicar no más.
-# 1. Freq
-# 2. row
-# 3. col
-# 4. cell
-# 5. Chi2
+#' @title Calcula una tabla de contingencia entre 2 variables
+#'
+#' @description Función que calcula una tabla de contingencia entre dos variables de cualquier tipo las cuales se pasan a factor. Calcula la frecuencia, porcentaje por fila y columna y celda, además de test de independencia Chi-cuadrado y prueba exacta de Fisher.
+#' 
+#' @param rvar Variable que irá en las filas de la tabla
+#' @param cvar Variable que irá en las columnas de la tabla
+#' @param data Data Frame que contiene las variables
+#' @param clip Opciones de portapapeles, 0 = return, 1 = freq, 2 = row, 3 = col, 4 = col, 5 = chi2, 6 = 1 & 5
+#' 
+#' @return Devuelve una lista compuesta con las 4 tablas y el test. Según clip se pasa al clipboard.
+#' 
+#' @examples
+#' otable(rvar = "cyl", data = mtcars)
+#' otable(rvar = "cyl", cvar = "am", data = mtcars, clip = 0)
 
-# Data de prueba
-# data <- mtcars
-# rvar <- "gear"
-# cvar <- "am"
 
-
-otable <- function(rvar = NULL, cvar = NULL, data = NULL){
+otable <- function(rvar = NULL, cvar = NULL, data = NULL, clip = 0){
      require(dplyr)
 
      # Si es que sólo hay row var (1 variable)
@@ -147,7 +148,7 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL){
           row.names(pctcell) <- NULL
           
           
-          # Test de independencia
+          # Test de independencia   .)
 #           F <- fisher.test(df)
 #           F <- F$p.value
           
@@ -159,8 +160,42 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL){
           
           # Resultado
           lista <- list(freq=freq, row=pctrow, col=pctcol, cell=pctcell, pvalue = chi)
-          write.table(lista, "clipboard-128", sep="\t", row.names=FALSE)
-          return(lista)
+          
+          
+          ## Resultados según tipo de clip
+          if (clip == 0){
+               write.table(lista, "clipboard-128", sep="\t", row.names=FALSE)
+               return(lista)
+                   
+          } else if (clip == 1){
+               tab <- lista$freq
+               write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
+               return(tab)
+          
+          } else if (clip == 2){
+               tab <- lista$pctrow
+               write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
+               return(tab)         
+                    
+          } else if (clip == 3){
+               tab <- lista$pctcol
+               write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
+               return(tab)  
+          
+          } else if (clip == 4){
+               tab <- lista$pctcell
+               write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
+               return(tab) 
+               
+          } else if (clip == 5){
+               tab <- lista$pvalue
+               write.table(tab, "clipboard-128", sep="\t", row.names=FALSE)
+               return(tab)
+               
+          } else {
+               stop()
+          }
+          
      }
 
 }
