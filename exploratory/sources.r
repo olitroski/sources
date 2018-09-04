@@ -8,6 +8,7 @@ source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 
 # Summary mean y sd 
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_summ.r")
+source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/osumm.r")
 
 # ttest
 source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest_indep.r")
