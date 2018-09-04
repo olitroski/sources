@@ -1,6 +1,6 @@
-#' @title Olitos's Summary, estadísticas descriptivas 
+#' @title Olitos's Summary, estadÃ­sticas descriptivas 
 #'
-#' @decription Esta función calcula estadísticas descriptivas de una variable numérica y tiene la opción de hacer los cálculos por grupo. De momento solo 1 grupo. Calcula la Media, mediana, desviación estándar, iqr, Q1, Q2, N, Miss, N valido, minimo, maximo. También un Shapiro. Siempre sacando los NA, que se reportan en los missing. Se pasa al porta papeles.
+#' @decription Esta función calcula estadÃ­sticas descriptivas de una variable numérica y tiene la opción de hacer los cálculos por grupo. De momento solo 1 grupo. Calcula la Media, mediana, desviaciÃ³n estándar, iqr, Q1, Q2, N, Miss, N valido, minimo, maximo. También un Shapiro. Siempre sacando los NA, que se reportan en los missing. Se pasa al porta papeles.
 #'
 #' @param var Variable o Vector de variables en String
 #' @param grp Variable de agrupación, puede ser un string, factor o numérico, si no está no se usa
@@ -21,7 +21,7 @@ osumm <- function(var = NULL, grp = NULL, data = NULL){
      variables <- select(data, var)
      
      for (j in 1:dim(variables)[2]){
-          if (is.numeric(data[,j]) == FALSE){
+          if (is.numeric(variables[,j]) == FALSE){
                stop(paste("Variable", names(variables)[j], "no es numerica"))
           }
      }
@@ -61,7 +61,7 @@ osumm <- function(var = NULL, grp = NULL, data = NULL){
      }
      
 
-     # Hacer los cálculos para sin grupo
+     # Hacer los calculos para sin grupo
      if (class(grp) == "NULL"){
           stat <- calculos(variables)
           write.table(stat, "clipboard-128", sep="\t", row.names=FALSE)
