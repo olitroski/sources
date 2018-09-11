@@ -13,7 +13,6 @@ source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/s
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest.calc.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest_indep.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_ttest_pair.r')
-source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/sources.r')
 library(stringr)
 library(dplyr)
 library(openxlsx)
