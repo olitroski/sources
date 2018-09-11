@@ -36,12 +36,13 @@
 oprop.df <- function(pct1 = NULL, pct2 = NULL, n1 = NULL, n2 = NULL, data = NULL, append = FALSE){
      # Seleccionar la data
      temp <- select(data, pct1, pct2, n1, n2)
+     names(temp) <- c("pct1", "pct2", "n1", "n2")
      
      # Asignar a objetos como en la otra función
-     p <- data$pct1
-     q <- data$pct2
-     np <- data$n1
-     nq <- data$n2
+     p <- temp$pct1
+     q <- temp$pct2
+     np <- temp$n1
+     nq <- temp$n2
      
      # Data for the formula
      dif <- p - q
