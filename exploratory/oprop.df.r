@@ -62,6 +62,7 @@ oprop.df <- function(pct1 = NULL, pct2 = NULL, n1 = NULL, n2 = NULL, data = NULL
 
      # Resultado
      temp <- data.frame(Z = round(Z, 3), two.t = two, one.t = one)
+     temp <- mutate(temp, p = ifelse(one.t <= 0.05, "***", ""))
      
      if (append == FALSE){
           write.table(temp, "clipboard-128", sep="\t", row.names=FALSE)
