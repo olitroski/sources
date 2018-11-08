@@ -1,3 +1,4 @@
+source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/okeep.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/oclip.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/oprop.df.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/oprop.r')
