@@ -2,7 +2,7 @@ source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/o
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/oclip.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/oprop.df.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/oprop.r')
-source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/osumm.r')
+source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_osumm.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_merge.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_order.var.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_otable.r')
