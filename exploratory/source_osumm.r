@@ -12,10 +12,10 @@
 #' osumm("mpg", data = mtcars)
 #' osumm("mpg", "am", data = mtcars)
 #' osumm(c("mpg", "disp", "wt"), data = mtcars)
-#' osumm(c("mpg", "disp", "wt"), "am", data = mtcars)
+#' osumm(c("mpg", "disp", "wt", "gear"), "am", data = mtcars)
 #'
 osumm <- function(var = NULL, grp = NULL, data = NULL){
-     require(dplyr)
+     require(dplyr)   #
 
      # Seleccionar data y chequea que sea numérica
      variables <- select(data, var)
@@ -29,27 +29,27 @@ osumm <- function(var = NULL, grp = NULL, data = NULL){
      calculos <- function(data){
           # Acopio de estadisticas
           stat <- NULL
-          for (j in 1:dim(variables)[2]){
-               media = mean(variables[,j], na.rm = TRUE)
-               mediana = median(variables[,j], na.rm = TRUE)
+          for (j in 1:dim(data)[2]){
+               media = mean(data[,j], na.rm = TRUE)
+               mediana = median(data[,j], na.rm = TRUE)
           
-               desv.est = sd(variables[,j], na.rm = TRUE)
-               p25 <- quantile(variables[,j], probs = 0.25, na.rm = TRUE)
-               p75 <- quantile(variables[,j], probs = 0.75, na.rm = TRUE)
+               desv.est = sd(data[,j], na.rm = TRUE)
+               p25 <- quantile(data[,j], probs = 0.25, na.rm = TRUE)
+               p75 <- quantile(data[,j], probs = 0.75, na.rm = TRUE)
                iqr <- p75 - p25
           
-               N = dim(variables)[1]
-               miss = sum(is.na(variables[,j]))
-               valid = dim(data)[1] - sum(is.na(variables[,j]))
+               N = dim(data)[1]
+               miss = sum(is.na(data[,j]))
+               valid = dim(data)[1] - sum(is.na(data[,j]))
           
-               valmin <- min(variables[,j], na.rm = TRUE)
-               valmax <- max(variables[,j], na.rm = TRUE)
+               valmin <- min(data[,j], na.rm = TRUE)
+               valmax <- max(data[,j], na.rm = TRUE)
                
-               shapi <- shapiro.test(variables[,j])
+               shapi <- shapiro.test(data[,j])
                shapi <- shapi$p.value
           
                # Compila
-               result <- data.frame(variable = names(variables)[j], media, mediana, desv.est, iqr, p25, p75, 
+               result <- data.frame(variable = names(data)[j], media, mediana, desv.est, iqr, p25, p75, 
                     min = valmin, max = valmax, N, miss, valid, shapiro = shapi)
                stat <- rbind(stat, result)
           }
@@ -63,40 +63,39 @@ osumm <- function(var = NULL, grp = NULL, data = NULL){
 
      # Hacer los calculos para sin grupo
      if (class(grp) == "NULL"){
-          stat <- calculos(variables)
-          write.table(stat, "clipboard-128", sep="\t", row.names=FALSE)
-          return(stat)
+          stat2 <- calculos(variables)
+          write.table(stat2, "clipboard-128", sep="\t", row.names=FALSE)
+          return(stat2)
      
      # Si no es null significa que algo hay
      } else {
           # Antecedentes
           vargrp <- data[, c(grp, var)]
           grupos <- unique(data[, grp])
-     
+
           # Calculos sobre los grupos
-          stat <- NULL
+          stat3 <- NULL
           for (gp in grupos){
+         
                temp <- vargrp[vargrp[[1]] == gp, ]
                grpname <- names(temp)[1]
                temp[[1]] <- NULL
           
+               # Arreglo del dim
+               nvariables <- dim(temp)[2]
+                
                stat.calc <- calculos(temp)
-               stat.names <- cbind(variable = stat.calc[,1], data.frame(grupo = rep(gp, 3)))
+               stat.names <- cbind(variable = stat.calc[,1], data.frame(grupo = rep(gp, nvariables)))    
                stat.calc[[1]] <- NULL
                stat.calc <- cbind(stat.names, stat.calc)
                names(stat.calc)[2] <- grpname
                
-               stat <- rbind(stat, stat.calc)
+               stat3 <- rbind(stat3, stat.calc)
+               rm(stat.calc)
           }
           
           # Retorno
-          write.table(stat, "clipboard-128", sep="\t", row.names=FALSE)
-          return(stat)          
-          
+          write.table(stat3, "clipboard-128", sep="\t", row.names=FALSE)
+          return(stat3)          
      }
-
-     
 }
-
-
-
