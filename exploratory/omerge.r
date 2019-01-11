@@ -88,6 +88,8 @@ omerge <- function(xdf = NULL, ydf = NULL, byvar = NULL, keep = FALSE){
      match <- dplyr::filter(datos, merge == "Matched observations")
 
      if (keep == TRUE){
-          return(list(master = m, using = u, match = match, report = report))
+        return(list(master = m, using = u, match = match, report = report))
+     } else {
+        return(report)
      }
 }
