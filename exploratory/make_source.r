@@ -1,4 +1,5 @@
-# Para hacer el source, mientras no haga el package.skeleton
+# Para hacer el source, mientras no haga el package
+# se corre completo y genera el source que uso para cargar desde github
 setwd("D:/OneDrive/GitHub/sources/exploratory")
 
 url <- "https://raw.githubusercontent.com/olitroski/sources/master/exploratory/"

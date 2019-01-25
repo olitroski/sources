@@ -7,12 +7,12 @@
 #' @param data Data Frame que contiene las variables
 #' @param clip Opciones de portapapeles, 0 = return, 1 = freq, 2 = row, 3 = col, 4 = col, 5 = chi2, 6 = 1 & 5
 #' 
-#' @return Devuelve una lista compuesta con las 4 tablas y el test. Según clip se pasa al clipboard.
+#' @return Devuelve una dataframe si 1 var o lista con las 4 tablas y el test si contingencia. Según clip se pasa al clipboard.
 #' 
 #' @examples
 #' otable(rvar = "cyl", data = mtcars)
 #' otable(rvar = "cyl", cvar = "am", data = mtcars, clip = 0)
-
+#' otable(rvar = "cyl", cvar = "am", data = mtcars, clip = 1)
 
 otable <- function(rvar = NULL, cvar = NULL, data = NULL, clip = 0){
      require(dplyr)
