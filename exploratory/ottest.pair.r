@@ -1,3 +1,14 @@
+#' @title Olito's ttest for dependent variables
+#' 
+#' @description refrito del stata
+#' 
+#' @param muchos 
+#' 
+#' @return un df creo
+#' 
+#' @examples
+#' 
+
 # ------------------------------------------------------------------------------------ #
 # ---- Source de un ttest pareado para tener resultado directo a data.frame ---------- #
 # ------------------------------------------------------------------------------------ #
@@ -11,7 +22,7 @@
 # version <- 1
 # 
 ## Funcion ttest pareado
-ttest.pair <- function(set1 = NULL, set2 = NULL, data = NULL, version = 1, save = "file"){
+ottest.pair <- function(set1 = NULL, set2 = NULL, data = NULL, version = 1, save = "file"){
 	# Paquetes
 	require(dplyr); require(openxlsx)
 	

@@ -1,6 +1,6 @@
 #' @title Olitos's clipboard
 #'
-#' @decription Esta función simplemente copia un objeto al clipboard y lo pasa a la consola, si se puede poner en la consola se copia.
+#' @decription Esta función copia un objeto al clipboard y lo pasa a la consola, si se puede poner en la consola se copia.
 #'
 #' @param x El objeto en cuestión
 #' 

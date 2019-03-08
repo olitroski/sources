@@ -2,7 +2,7 @@
 #' 
 #' @description Esta función hace un grafico de barras a partir de un resultado de
 #' calcular una tabla con "otable". También imprime la tabla con la cual se hizo
-#' el gráfico, aunque no está en el return.
+#' el gráfico, pero no está en el return.
 #' 
 #' @param tabdata Tabla o Lista resultado de construir una tabla con "otable"
 #' @param stat El tipo de dato con el que contruye la tabla puede ser: freq, cell, row, col

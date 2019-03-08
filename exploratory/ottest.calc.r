@@ -1,3 +1,15 @@
+#' @title Olito's ttest calculator
+#' 
+#' @description Calculadora
+#' 
+#' @param Montones
+#' 
+#' @return 
+#' 
+#' @examples
+#' 
+
+
 # Función para calcular un ttest a partir de datos estadísticos descriptivos
 # toma como argumentos las medias, desviaciones y tamaños muestrales
 # está bueno para hacer source.
@@ -8,7 +20,7 @@
 # n1, n2: the same sizes
 # m0: the null value for the difference in means to be tested for. Default is 0. 
 # equal.variance: whether or not to assume equal variance. Default is FALSE. 
-ttest <- function(m1,m2,s1,s2,n1,n2,m0=0,equal.variance=FALSE) {
+ottest.calc <- function(m1,m2,s1,s2,n1,n2,m0=0,equal.variance=FALSE) {
      # Welch-satterthwaite df
      if (equal.variance==FALSE){
           se <- sqrt( (s1^2/n1) + (s2^2/n2) )

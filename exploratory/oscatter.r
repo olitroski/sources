@@ -1,16 +1,22 @@
-# Función para hacer un grafico en ggplot2 un scatter con correlación y lm
-# sin facets, sólo el gráfico 2 variables y una tercera para colorear, pero
-# que no es parte lm
+#' @title Olito's Scatter plot
+#' 
+#' @description Función para hacer un grafico en ggplot2 un scatter con correlación y lm sin facets, sólo el gráfico 2 variables y una tercera para colorear, pero que no es parte del lm. Usa la función opwcorr (por si sale error)
+#'
+#' @param xvar Variable en X
+#' @param yvar Variable en Y
+#' @param data Un data frame
+#' @param color Variable de grupo para colorear puntos (opcional)
+#' @param outl Puede recortar en +-2sd las variables x e y, =FALSE
+#' 
+#' @return Un plot de ggplot
+#' 
+#' @examples Por construir
+#' data(mtcars)
+#' oscatter(xvar = "wt", yvar = "mpg", data = mtcars, color = "cyl")
+#'
 
-# Test pre
-# data <- mtcars
-# yvar <- "mpg"
-# xvar <- "wt"
-# color <- "cyl"
-# outl <- TRUE
-
-scatter <- function(xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = FALSE){
-     source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_pwcorr.r")
+oscatter <- function(xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = FALSE){
+     # source("https://raw.githubusercontent.com/olitroski/sources/master/exploratory/source_pwcorr.r")
      require(ggplot2)
      require(dplyr)
      
@@ -54,7 +60,7 @@ scatter <- function(xvar = NULL, yvar = NULL, data = NULL, color = NULL, outl = 
      
      # Correlacion y regresión
      N <- dim(gdata)[1]
-     r <- pwcorr(set1="varx", set2="vary", data = gdata, set = 1)
+     r <- opwcorr(set1="varx", set2="vary", data = gdata, set = 1)
      r <- paste("Pearson: n=", N, " r=", r[1,2], " p=", sprintf("%.3f",r[1,3]), sep="")
           
      fit <- lm(vary ~ varx, data = gdata)

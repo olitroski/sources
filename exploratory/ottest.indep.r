@@ -1,3 +1,15 @@
+#' @title Olito's ttest para vars indepndientes
+#' 
+#' @description Un refrito del stata
+#' 
+#' @param
+#' 
+#' @return
+#' 
+#' @examples
+#' 
+
+
 # ------------------------------------------------------------------------------ #
 # Función para calcular un ttest a partir de variables de un data.frame          #
 # usa t.test base y con los nombres de variables para crea un data.frame         #
@@ -19,7 +31,7 @@
 # 	datos 
 # 	igualdad de varianza
 
-ttest.indep <- function(varlist = NULL, grpvar = NULL, data = NULL, version = 1, save = "file"){
+ottest.indep <- function(varlist = NULL, grpvar = NULL, data = NULL, version = 1, save = "file"){
 	require(dplyr); require(openxlsx); require(lazyeval)
 	
 	## Loopeo entre las variables del varlist

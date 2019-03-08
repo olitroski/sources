@@ -1,12 +1,12 @@
-#' @title Olitos's Summary, estadÃ­sticas descriptivas 
+#' @title Olitos's Summary, estadisticas descriptivas 
 #'
-#' @decription Esta función calcula estadÃ­sticas descriptivas de una variable numérica y tiene la opción de hacer los cálculos por grupo. De momento solo 1 grupo. Calcula la Media, mediana, desviaciÃ³n estándar, iqr, Q1, Q2, N, Miss, N valido, minimo, maximo. También un Shapiro. Siempre sacando los NA, que se reportan en los missing. Se pasa al porta papeles.
+#' @decription Esta funcion calcula estadisticas descriptivas de una variable numerica y tiene la opcion de hacer los calculos por grupo. De momento solo 1 grupo. Calcula la Media, mediana, desviacion estandar, iqr, Q1, Q2, N, Miss, N valido, minimo, maximo. Tambien un Shapiro. Siempre sacando los NA, que se reportan en los missing. Se pasa al porta papeles.
 #'
 #' @param var Variable o Vector de variables en String
-#' @param grp Variable de agrupación, puede ser un string, factor o numérico, si no está no se usa
+#' @param grp Variable de agrupacion, puede ser un string, factor o numerico, si no esta no se usa
 #' @param data Data frame 
 #' 
-#' @return Devuelve un data frame que además se pasa al portapepeles
+#' @return Devuelve un data frame que ademas se pasa al portapepeles
 #'
 #' @examples
 #' osumm("mpg", data = mtcars)
@@ -17,7 +17,7 @@
 osumm <- function(var = NULL, grp = NULL, data = NULL){
      require(dplyr)   #
 
-     # Seleccionar data y chequea que sea numérica
+     # Seleccionar data y chequea que sea numerica
      variables <- select(data, var)
      
      for (j in 1:dim(variables)[2]){

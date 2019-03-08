@@ -1,7 +1,24 @@
+#' @title Olitos's Pearson calculator
+#' 
+#' @description Calcula correlación de pearson a partir de 2 vectores, agrega un mensaje si se quiere
+#' 
+#' @param x Vector 1
+#' @param y Vector 
+#' @param msg FALSE by default, por si se quiere algún mensaje sobre missing data
+#' 
+#' @return Data.frame con los resultados
+#' 
+#' @examples
+#' data(mtcars)
+#' x <- mtcars$mpg
+#' y <- mtcars$wt
+#' opearson(x, y, msg = TRUE)
+
+
 # Source que calcula correlacion de pearson con ajuste de missing por pairwise
 # arroja un data frame con todo y avisa de missing
 # Solo acepta dos vectores
-pearson <- function(x, y, msg=FALSE){
+opearson <- function(x, y, msg=FALSE){
 	# para avisar si hay NAs
 	nax <- sum(is.na(x))
 	nay <- sum(is.na(y))

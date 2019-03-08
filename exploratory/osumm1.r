@@ -1,10 +1,21 @@
+#' @title Olitos's summary para variables completas en 2 variantes
+#' 
+#' @description eso, solo estadsiticas muy simples para variable completa
+#' 
+#' @param set de variables en vector char
+#' 
+#' @return un df
+#' 
+#' @examples
+#' 
+
 ## Source para descriptivos generales simples de publicacion
 # data(mtcars)
 # data <- mtcars
 # set <- names(mtcars)
 # var <- "mpg"
 
-summ <- function(set = NULL, data = NULL, version = 1){
+osumm1 <- function(set = NULL, data = NULL, version = 1){
 	dfresult <- NULL
 	R <- 1     # Redondeo
 	require(dplyr)

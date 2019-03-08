@@ -1,3 +1,26 @@
+#' @title Olito's OrderVar para ordenar variables
+#' 
+#' @description Ordena variables dentro de un data.frame
+#' 
+#' @param datos Un data.frame
+#' @param variable o variables a mover (en un vector char)
+#' @param after Después de cual variable se dese mover (char or index), default = 1
+#' 
+#' @return Data frame con las variables ordenadas
+#' 
+#' @examples
+#' # Get some data and save order
+#' data(mtcars)
+#' nameberfore <- names(mtcars)
+#'
+#' # Ordenar
+#' mtcars <- ordervar(mtcars, "mpg", "am")
+#' nameberfore; names(mtcars)
+#'
+#' mtcars <- ordervar(mtcars, c("gear", "carb"), after = "wt")
+#'
+
+
 ## Stata order function or kinda
 # Just because I like tidy data frames... It's my life ok!!
 ordervar <- function(datos, varmove, after=1){

@@ -1,26 +1,26 @@
-## -------------------------------------------------------------------------------- ##
-## --- pwcorr: Correlations between (onevar & set) and (set & set) ---------------- ##
-## --- Ver 2.0, by Oliver Rojas 04.2018, Lab.Sueño, INTA, U.Chile ----------------- ##
-## -------------------------------------------------------------------------------- ##
-# Function Test Data
-     # rm(list=ls())
-     # data <- mtcars
-     # var_unique <- "mpg"
-     # var_set <- c("mpg", "cyl", "qsec")
-     # var_multiple <- c("drat", "hp", "wt")
-     # type <- "pearson"
-     # set <- 1
+#' @title pwcorr Correlations between (onevar & set) and (set & set)
+#'
+#' @description Calculate correlations by transforming into a matrix and the use of hmisc package the rest is data management. Calculates pearson and spearman. Wrapper del Stata.
+#' 
+#' @param set1 Char vector de variables (o una sola)
+#' @param set2 Lo mismo que el 1
+#' @param data Un data frame
+#' @param type Tipo de correlación que se quiere ="pearson" o "spearman"
+#' @param save Guarda el resultado en un excel en el wd
+#' @param set 1 = es una variable contra 1 o varias, 2 = pares de variables en dos char vectors
+#' 
+#' @examples
+#' # Function Test Data
+#' data <- mtcars
+#' var_unique <- "mpg"
+#' var_set <- c("mpg", "cyl", "qsec")
+#' var_multiple <- c("drat", "hp", "wt")
+#' opwcorr("mpg", c("drat", "hp", "wt"), data = mtcars, set = 1)
+#' opwcorr(c("mpg", "cyl", "qsec"), c("drat", "hp", "wt"), data = mtcars, set = 2)
+#'
 
-# INFO: Calculate correlations by transforming into a matrix and the use of hmisc package
-#       the rest is data management. Calculates pearson and spearman.
-# 
-# set = 1 is one to many
-# set = 2 is one by one
-# set1:   one var quoted or set of vars also quoted
-# set2:   set of vars 
-# save:   if there id a name like "mycorrfile" this export the result into an excel
 
-pwcorr <- function(set1 = NULL, set2 = NULL, data = NULL, type = "pearson", save = "file", set = NULL){ 
+opwcorr <- function(set1 = NULL, set2 = NULL, data = NULL, type = "pearson", save = "file", set = NULL){ 
      # Packages
      require(dplyr); require(Hmisc)
 		
