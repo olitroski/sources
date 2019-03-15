@@ -23,9 +23,11 @@
 #' keep <- FALSE
 #' 
 #' omerge(xdf, ydf, "cars")
+#' omerge(xdf, ydf, "cars", output = FALSE)
 #' omerge(xdf, ydf, "cars", keep = TRUE)
+#' omerge(xdf, ydf, "cars", keep = TRUE, output = FALSE)
 #'
-omerge <- function(xdf = NULL, ydf = NULL, byvar = NULL, keep = FALSE){
+omerge <- function(xdf = NULL, ydf = NULL, byvar = NULL, keep = FALSE, output = TRUE){
     require(dplyr)
     
     # Ordena las bases de datos para situar el idvar al comienzo
@@ -45,17 +47,17 @@ omerge <- function(xdf = NULL, ydf = NULL, byvar = NULL, keep = FALSE){
     
     # Hacer el reporte de variables
     varnames <- names(df)
-    cat("\n--- Reporte variables del merge ---")
+    if (output ==TRUE){cat("\n--- Reporte variables del merge ---")}
     
     master.ini <- eval(parse(text=master))[1]
     master.fin <- max(eval(parse(text=master)))
-    cat("\nMaster", master, "- Inicio:", varnames[master.ini], 
-        "\n              Final:", varnames[master.fin], "\n")
+    if (output ==TRUE){cat("\nMaster", master, "- Inicio:", varnames[master.ini], 
+        "\n              Final:", varnames[master.fin], "\n")}
           
     using.ini <- eval(parse(text=using))[1]
     using.fin <- max(eval(parse(text=using)))
-    cat("\nUsing", using, "- Inicio:", varnames[using.ini], 
-        "\n              Final:", varnames[using.fin], "\n\n")
+    if (output ==TRUE){cat("\nUsing", using, "- Inicio:", varnames[using.ini], 
+        "\n              Final:", varnames[using.fin], "\n\n")}
     
     # Suma los NA por fila
     datos <- df
@@ -77,9 +79,9 @@ omerge <- function(xdf = NULL, ydf = NULL, byvar = NULL, keep = FALSE){
      report <- data.frame(table(datos$merge2))
      names(report) <- c("StatusMerge", "Count")
      report <- rbind(report, data.frame(StatusMerge = "--- Total ---", Count = sum(report$Count)))
-     print(report, row.names = FALSE)
-          
-
+     
+     if (output == TRUE){print(report, row.names = FALSE)}
+     
      ## Return del data frame
      datos <- dplyr::select(datos, -na_master, -na_using, -na_count, -merge) %>% dplyr::rename(merge = merge2)
      
@@ -89,7 +91,8 @@ omerge <- function(xdf = NULL, ydf = NULL, byvar = NULL, keep = FALSE){
 
      if (keep == TRUE){
         return(list(master = m, using = u, match = match, report = report))
-     } else {
-        return(report)
-     }
+     } 
+#      else {
+#         return(report)
+#      }
 }

@@ -40,7 +40,9 @@ otable <- function(rvar = NULL, cvar = NULL, data = NULL, clip = 0){
           df <- mutate(df, pct = round(pct, 3))
           
           # Resultado
-          write.table(df, "clipboard-128", sep="\t", row.names=FALSE)
+          if (clip == 1){
+               write.table(df, "clipboard-128", sep="\t", row.names=FALSE)
+          }
           return(df)
           
           
