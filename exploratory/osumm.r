@@ -45,9 +45,14 @@ osumm <- function(var = NULL, grp = NULL, data = NULL){
                valmin <- min(data[,j], na.rm = TRUE)
                valmax <- max(data[,j], na.rm = TRUE)
                
-               shapi <- shapiro.test(data[,j])
-               shapi <- shapi$p.value
-          
+               if (N > 5000){
+                    cat("N > 5000, Shapiro-Wilks to NA \n")
+                    shapi <- NA
+               } else {
+                    shapi <- shapiro.test(data[,j])
+                    shapi <- shapi$p.value
+               }
+
                # Compila
                result <- data.frame(variable = names(data)[j], media, mediana, desv.est, iqr, p25, p75, 
                     min = valmin, max = valmax, N, miss, valid, shapiro = shapi)
