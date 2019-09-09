@@ -15,6 +15,7 @@ source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/o
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/ottest.calc.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/ottest.indep.r')
 source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/ottest.pair.r')
+source('https://raw.githubusercontent.com/olitroski/sources/master/exploratory/omean.plot.r')
 library(stringr)
 library(dplyr)
 library(openxlsx)
